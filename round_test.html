@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.14.2/math.min.js"></script>
+</head>
+<script>//script在html里面即可
+function round()  
+{    
+	var num=document.getElementById("input").value;
+	var sign=1;//符号位，1代表正数，-1代表负数
+	if(num<0){
+		num=Math.abs(num);
+		sign=-1;
+	}
+	num=Math.round(num*100)/100*sign;//num*100进行运算的时候会产生精度误差，比如1041.735*100=104173.4999999999998
+	num+="";
+	var doublcDc=num.length-num.indexOf(".")-1;
+	  if(doublcDc==num.length)//结果没有小数位
+	{
+		num+=".00";
+	}
+	else if(doublcDc==1)//结果只有一位
+	{
+		num+="0";
+	}
+	document.getElementById("result").value=num;
+	
+}
+
+function round2()  
+{    
+	var src=document.getElementById("input2").value;
+	var sign=1;//符号位，1代表正数，-1代表负数
+	if(src<0){
+		src=Math.abs(src);
+		sign=-1;
+	}
+	
+	//src=(src*Math.pow(10, 2)/Math.pow(10, 2));//+0.0000001
+	alert(math.round(math.multiply(100,1041.735))/100);
+	alert(src*Math.pow(10, 2));
+	alert(Math.round(src*Math.pow(10, 2)));
+	src= Math.round(src*Math.pow(10, 2))/Math.pow(10, 2);
+
+	
+	document.getElementById("result2").value=src;
+	
+}
+//alert(a);
+//a();
+var a=3;
+function a(){
+    alert(10)
+}   
+alert(a);
+a=6;
+a();
+</script>
+<body bgcolor="gray">
+<form>
+<div>
+<input id="input" autocomplete="off" ></input>
+<input type="button" value="保留2位小数四舍五入后为:" onclick="round()"></input>
+<input id="result"></input>
+<input id="input2" autocomplete="off" ></input>
+<input type="button" value="保留2位小数四舍五入后为:" onclick="round2()"></input>
+<input id="result2"></input>
+
+</div>
+</form>
+</body>
+</html>
